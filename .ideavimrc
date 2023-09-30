@@ -1,0 +1,52 @@
+"
+" IdeaVim Config File
+"
+" https://github.com/JetBrains/ideavim/wiki/
+"
+" Example: https://github.com/sdaschner/dotfiles/blob/master/.ideavimrc
+" Example: https://archive.ph/70p9P#selection-835.0-835.55 - Has MethodUp/MethodDown
+"
+set sneak
+set ignorecase " sneak will this.
+set smartcase " sneak will respect this. switches to case as soon as you enter a capital.
+set relativenumber
+set number
+set ideajoin " Means that J will concat strings, if statments, etc.
+" set ideamarks - Use intelliJ bookmarks when setting vim "marks". Haven't mastered this yet.
+
+" These allow intelliJ to use system clipboard
+set clipboard+=unnamed 
+set clipboard+=ideaput
+
+set ideastatusicon=gray " enabled | gray | disabled
+
+set idearefactormode=keep " keep | select | visual
+
+" Allows vim bindings for file tree.
+Plug 'preservim/nerdtree'
+set NERDTree
+let g:NERDTreeMapActivateNode='l' " default from copy-pasta. change this, and following one.
+let g:NERDTreeMapJumpParent='h'
+
+" Key mappings
+"
+" Note: List of commands: http://codecode.fun/blog/2020/01/05/idea-actions-list
+" Also by typing :actionlist (or :actionlist Terminal)
+"
+let mapleader=" "
+
+nnoremap \e :e /Users/gavnewalkar/.ideavimrc<CR>
+nnoremap \r :action IdeaVim.ReloadVimRc.reload<CR>
+
+nnoremap <leader>t :action ActivateTerminalToolWindow<CR>
+
+nnoremap <leader><ESC> :action HideActiveWindow<CR>
+
+nnoremap <leader>v :action SplitVertically<CR>
+nnoremap <leader>h :action SplitHorizontally<CR>
+nnoremap <leader>> :action MoveEditorToOppositeTabGroup<CR>
+
+" Note you can chain actions with \| Eg:
+" nmap zc :action ReformatCode  \| action RiderUnitTestRunSolutionAction<CR>
+
+
