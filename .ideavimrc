@@ -15,8 +15,9 @@ set ideajoin " Means that J will concat strings, if statments, etc.
 " set ideamarks - Use intelliJ bookmarks when setting vim "marks". Haven't mastered this yet.
 
 " These allow intelliJ to use system clipboard
-set clipboard+=unnamed 
-set clipboard+=ideaput
+" Actually problematic: Select text elsewhere, then go to IntelliJ, cut text "x", now that's replaced your clipboard.
+" set clipboard+=unnamed
+" set clipboard+=ideaput
 
 set ideastatusicon=gray " enabled | gray | disabled
 
@@ -35,6 +36,10 @@ let g:NERDTreeMapJumpParent='h'
 "
 let mapleader=" "
 
+" YES!!! Yank and stay at cursor!!!
+" Explanation: in v mode: mc=mark "c", y=yank (which goes to start), `c=go back to c
+vnoremap y mcy`c
+
 nnoremap \e :e /Users/gavnewalkar/.ideavimrc<CR>
 nnoremap \r :action IdeaVim.ReloadVimRc.reload<CR>
 
@@ -42,8 +47,13 @@ nnoremap <leader>t :action ActivateTerminalToolWindow<CR>
 
 nnoremap <leader><ESC> :action HideActiveWindow<CR>
 
-nnoremap <leader>v :action SplitVertically<CR>
-nnoremap <leader>h :action SplitHorizontally<CR>
+nnoremap <leader>v :action SplitVertically<CR> " get used to useing | instead
+nnoremap <leader>\| :action SplitVertically<CR>
+nnoremap <leader>- :action SplitHorizontally<CR>
+" These don't work well since <leader>h* has other mappings.
+" nnoremap <leader>h <c-w>h " go left
+" nnoremap <leader>l <c-w>l " go right
+
 nnoremap <leader>> :action MoveEditorToOppositeTabGroup<CR>
 
 " Note you can chain actions with \| Eg:
